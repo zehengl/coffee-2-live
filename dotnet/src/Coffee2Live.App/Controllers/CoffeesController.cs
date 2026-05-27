@@ -52,15 +52,18 @@ namespace Coffee2Live.App.Controllers
                 {
                     Id = CreateDeterministicGuid(i.Name),
                     Name = i.Name ?? string.Empty,
-                    Origin = string.Empty,
+                    Origin = i.Origin ?? string.Empty,
                     TastingNotes = i.TastingNotes ?? string.Empty,
                     Bitterness = i.Bitterness,
                     Body = i.Body,
                     BestFor = i.BestFor ?? string.Empty,
                     Acidity = TryParseEnum<Acidity>(i.Acidity, Acidity.Medium),
-                    Roast = TryParseEnum<Roast>(i.Roast, Roast.Medium)
+                    Roast = TryParseEnum<Roast>(i.Roast, Roast.Medium),
+                    Price = i.Price
                 };
+                
                 list.Add(coffee);
+                
             }
             return list;
         }
@@ -90,6 +93,7 @@ namespace Coffee2Live.App.Controllers
             public int Body { get; set; }
             public string? Roast { get; set; }
             public string? BestFor { get; set; }
+            public decimal Price { get; set; }
         }
     }
 }

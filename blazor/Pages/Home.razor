@@ -17,33 +17,81 @@
     }
     else
     {
-        <div class="row g-3">
-            @foreach (var c in coffees!)
-            {
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card coffee-card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">@c.Name</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">@c.Origin</h6>
-                            <p class="card-text small mb-2">@c.TastingNotes</p>
-                            <div class="small">
-                                <span class="badge text-bg-light me-1">Roast: @c.Roast</span>
-                                <span class="badge text-bg-light me-1">Acidity: @c.Acidity</span>
-                                <span class="badge text-bg-light me-1">Body: @c.Body/5</span>
-                                <span class="badge text-bg-light me-1">Bitterness: @c.Bitterness/10</span>
-                            </div>
-                        </div>
-                        <div class="card-footer text-muted small">Best for: @c.BestFor</div>
-                    </div>
-                </div>
-            }
+        <div class="mb-4 d-flex align-items-center gap-2 flex-wrap">
+            <label class="form-label mb-0" for="roastFilter">Filter by roast:</label>
+            <select id="roastFilter" class="form-select w-auto" @bind="selectedRoast">
+                <option value="All">All roasts</option>
+                <option value="Light">Light</option>
+                <option value="Medium">Medium</option>
+                <option value="Dark">Dark</option>
+            </select>
+
+            <label class="form-label mb-0" for="maxPriceInput">Max price:</label>
+            <input id="maxPriceInput" type="text" inputmode="decimal" class="form-control w-auto" placeholder="e.g. 12.50" @bind="maxPriceText" />
         </div>
+
+        @if (!DisplayCoffees.Any())
+        {
+            <div class="text-secondary">No coffees match the selected roast.</div>
+        }
+        else
+        {
+            <div class="row g-3">
+                @foreach (var c in DisplayCoffees)
+                {
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card coffee-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">@c.Name (@c.Price.ToString("C"))</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@c.Origin</h6>
+                                <p class="card-text small mb-2">@c.TastingNotes</p>
+                                <div class="small">
+                                    <span class="badge text-bg-light me-1">Roast: @GetRoastLabel(c.Roast)</span>
+                                    <span class="badge text-bg-light me-1">Acidity: @c.Acidity</span>
+                                    <span class="badge text-bg-light me-1">Body: @c.Body/5</span>
+                                    <span class="badge text-bg-light me-1">Bitterness: @c.Bitterness/10</span>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted small">Best for: @c.BestFor</div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
     }
 </div>
 
 @code {
     private Coffee[]? coffees;
     private string? error;
+    private RoastFilter selectedRoast = RoastFilter.All;
+    private string maxPriceText = string.Empty;
+
+    private IEnumerable<Coffee> DisplayCoffees => coffees is null
+        ? Array.Empty<Coffee>()
+        : coffees
+            .Where(c => selectedRoast == RoastFilter.All || c.Roast == (int)selectedRoast - 1)
+            .Where(c => !TryGetMaxPrice(out var maxPrice) || c.Price <= maxPrice)
+            .OrderBy(c => c.Name, StringComparer.InvariantCultureIgnoreCase);
+
+    private static readonly string[] RoastLabels = {"Light", "Medium", "Dark" };
+
+    private bool TryGetMaxPrice(out decimal maxPrice)
+    {
+        if (string.IsNullOrWhiteSpace(maxPriceText))
+        {
+            maxPrice = 0;
+            return false;
+        }
+
+        return decimal.TryParse(maxPriceText, System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out maxPrice)
+            || decimal.TryParse(maxPriceText, System.Globalization.NumberStyles.Currency, System.Globalization.CultureInfo.CurrentCulture, out maxPrice);
+    }
+
+    private static string GetRoastLabel(int roast)
+    {
+        return roast >= 0 && roast < RoastLabels.Length ? RoastLabels[roast] : "Unknown";
+    }
 
     protected override async Task OnInitializedAsync()
     {
@@ -55,5 +103,13 @@
         {
             error = "Failed to load coffees";
         }
+    }
+
+    private enum RoastFilter
+    {
+        All,
+        Light,
+        Medium,
+        Dark
     }
 }

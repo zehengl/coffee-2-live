@@ -11,4 +11,5 @@ public class Coffee
     public int Body { get; set; }
     public int Roast { get; set; }
     public string BestFor { get; set; } = string.Empty;
+    public decimal Price { get; set; }
 }
