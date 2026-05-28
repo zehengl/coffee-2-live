@@ -3,9 +3,21 @@
 
 <PageTitle>Coffee2Live</PageTitle>
 
-<div class="container py-4">
-    <h1 class="display-5 fw-semibold mb-3">Coffee2Live</h1>
-    <p class="text-secondary mb-4">Curated coffees you will love.</p>
+<div class="page-wrapper @(isDarkMode ? "dark-mode" : string.Empty)">
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h1 class="display-5 fw-semibold mb-0">Coffee2Live</h1>
+                <p class="text-secondary mb-0">Curated coffees you will love.</p>
+            </div>
+            <button class="btn btn-outline-secondary" @onclick="ToggleDarkMode">
+                @(isDarkMode ? "Switch to light mode" : "Switch to dark mode")
+            </button>
+        </div>
+
+        <div class="mt-2 mb-4">
+            <p class="text-secondary mb-0">Use the button to toggle the page theme.</p>
+        </div>
 
     @if (error is not null)
     {
@@ -39,11 +51,18 @@
             }
         </div>
     }
+    </div>
 </div>
 
 @code {
     private Coffee[]? coffees;
     private string? error;
+    private bool isDarkMode;
+
+    private void ToggleDarkMode()
+    {
+        isDarkMode = !isDarkMode;
+    }
 
     protected override async Task OnInitializedAsync()
     {

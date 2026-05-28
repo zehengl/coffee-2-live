@@ -112,6 +112,61 @@ code {
     --coffee-accent-2: #a47148;
 }
 
+.page-wrapper.dark-mode {
+    background-color: #101018;
+    color: #f1f1f7;
+}
+
+.page-wrapper.dark-mode .container {
+    background: #181826;
+}
+
+.page-wrapper.dark-mode .coffee-card {
+    border-color: #2d2d40;
+    background: #171726;
+}
+
+.page-wrapper.dark-mode .coffee-card .card-title {
+    color: #fff6d8;
+}
+
+.page-wrapper.dark-mode h1,
+.page-wrapper.dark-mode h5,
+.page-wrapper.dark-mode .card-title,
+.page-wrapper.dark-mode .btn-outline-secondary,
+.page-wrapper.dark-mode .badge.text-bg-light {
+    color: #f7f7fb;
+}
+
+.page-wrapper.dark-mode .card-subtitle,
+.page-wrapper.dark-mode .card-footer {
+    color: #f7e5a8;
+}
+
+.page-wrapper.dark-mode .card-text,
+.page-wrapper.dark-mode .text-secondary,
+.page-wrapper.dark-mode p {
+    color: #d8d8e6;
+}
+
+.page-wrapper.dark-mode .badge.text-bg-light {
+    background-color: #2f2f40 !important;
+}
+
+.page-wrapper.dark-mode .badge.text-bg-light {
+    background-color: #2a2832 !important;
+    color: #f5e7c3;
+}
+
+.page-wrapper.dark-mode .btn-outline-secondary {
+    color: #e6e6e9;
+    border-color: #5f636d;
+}
+
+.page-wrapper.dark-mode .btn-outline-secondary:hover {
+    background-color: #2a2a34;
+}
+
 .container {
     background: var(--coffee-bg);
     border-radius: .5rem;
