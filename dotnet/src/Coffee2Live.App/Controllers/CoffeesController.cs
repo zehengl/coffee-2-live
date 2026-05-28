@@ -12,15 +12,17 @@ namespace Coffee2Live.App.Controllers;
 [Route("api/[controller]")]
 public class CoffeesController : ControllerBase
 {
+    private readonly object _saveLock = new();
     private readonly Lazy<List<Coffee>> _coffees;
+    private readonly string _dataPath;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CoffeesController"/> class.
     /// </summary>
     public CoffeesController(IWebHostEnvironment env)
     {
-        var dataPath = Path.Combine(env.ContentRootPath, "Data", "coffees.json");
-        _coffees = new Lazy<List<Coffee>>(() => LoadCoffees(dataPath));
+        _dataPath = Path.Combine(env.ContentRootPath, "Data", "coffees.json");
+        _coffees = new Lazy<List<Coffee>>(() => LoadCoffees(_dataPath));
     }
 
     /// <summary>
@@ -46,6 +48,33 @@ public class CoffeesController : ControllerBase
         return Ok(coffee);
     }
 
+    /// <summary>
+    /// Add a new coffee to the catalog
+    /// </summary>
+    /// <param name="coffee">The coffee to add</param>
+    /// <returns>The created coffee</returns>
+    [HttpPost]
+    public ActionResult<Coffee> Create(Coffee? coffee)
+    {
+        if (coffee == null)
+        {
+            return BadRequest();
+        }
+
+        if (coffee.Id == Guid.Empty)
+        {
+            coffee.Id = Guid.NewGuid();
+        }
+
+        lock (_saveLock)
+        {
+            _coffees.Value.Add(coffee);
+            SaveCoffees(_coffees.Value, _dataPath);
+        }
+
+        return CreatedAtAction(nameof(GetById), new { id = coffee.Id }, coffee);
+    }
+
     private static List<Coffee> LoadCoffees(string path)
     {
         if (!System.IO.File.Exists(path)) return new List<Coffee>();
@@ -60,7 +89,7 @@ public class CoffeesController : ControllerBase
         {
             var coffee = new Coffee
             {
-                Id = CreateDeterministicGuid(i.Name),
+                Id = i.Id ?? CreateDeterministicGuid(i.Name),
                 Name = i.Name ?? string.Empty,
                 Origin = i.Origin ?? string.Empty,
                 TastingNotes = i.TastingNotes ?? string.Empty,
@@ -74,6 +103,37 @@ public class CoffeesController : ControllerBase
             list.Add(coffee);
         }
         return list;
+    }
+
+    private static void SaveCoffees(List<Coffee> coffees, string path)
+    {
+        var directory = Path.GetDirectoryName(path);
+        if (!string.IsNullOrWhiteSpace(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+
+        var items = coffees.Select(coffee => new CoffeeDto
+        {
+            Id = coffee.Id,
+            Name = coffee.Name,
+            Origin = coffee.Origin,
+            TastingNotes = coffee.TastingNotes,
+            Bitterness = coffee.Bitterness,
+            Acidity = coffee.Acidity.ToString(),
+            Body = coffee.Body,
+            Roast = coffee.Roast.ToString(),
+            BestFor = coffee.BestFor,
+            Price = coffee.Price
+        }).ToList();
+
+        var json = JsonSerializer.Serialize(items, new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            WriteIndented = true
+        });
+
+        System.IO.File.WriteAllText(path, json);
     }
 
     private static TEnum TryParseEnum<TEnum>(string? value, TEnum fallback) where TEnum : struct
@@ -93,6 +153,7 @@ public class CoffeesController : ControllerBase
 
     private class CoffeeDto
     {
+        public Guid? Id { get; set; }
         public string? Name { get; set; }
         public string? Origin { get; set; }
         public string? TastingNotes { get; set; }

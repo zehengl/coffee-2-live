@@ -129,6 +129,41 @@ public class CoffeesControllerTests
     }
 
     [Test]
+    public void Create_ReturnsCreatedAndPersistsCoffee()
+    {
+        WriteJson("[]");
+
+        var controller = CreateController();
+        var newCoffee = new Coffee
+        {
+            Name = "Cappuccino",
+            Origin = "Italy",
+            TastingNotes = "Creamy",
+            Bitterness = 5,
+            Acidity = Acidity.Medium,
+            Body = 3,
+            Roast = Roast.Medium,
+            BestFor = "Brunch",
+            Price = 4.25m
+        };
+
+        var result = controller.Create(newCoffee);
+
+        var created = result.Result as CreatedAtActionResult;
+        created.Should().NotBeNull();
+        created!.ActionName.Should().Be(nameof(CoffeesController.GetById));
+
+        var createdCoffee = created.Value as Coffee;
+        createdCoffee.Should().NotBeNull();
+        createdCoffee!.Id.Should().NotBeEmpty();
+        createdCoffee.Name.Should().Be("Cappuccino");
+
+        var reloaded = CreateController().GetAll().Result as OkObjectResult;
+        var coffees = (reloaded!.Value as IEnumerable<Coffee>)!.ToList();
+        coffees.Should().ContainSingle(c => c.Id == createdCoffee.Id && c.Name == "Cappuccino");
+    }
+
+    [Test]
     public void GetById_ReturnsCorrectCoffee_WhenMultipleCoffeesExist()
     {
         WriteJson("""

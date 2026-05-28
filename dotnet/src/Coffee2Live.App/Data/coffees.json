@@ -4,252 +4,287 @@
     "origin": "Yirgacheffe region, Ethiopia",
     "tastingNotes": "Bright citrus, floral jasmine, bergamot, and stone fruit with a tea-like body",
     "bitterness": 2,
-    "acidity": "high",
+    "acidity": "High",
     "body": 2,
-    "roast": "light",
+    "roast": "Light",
     "bestFor": "Pour over, drip coffee, those who enjoy fruity and floral profiles",
-    "price": 11.99
+    "price": 11.99,
+    "id": "e9f5ffa5-7f44-b833-144d-9a5d30cbe8f0"
   },
   {
     "name": "Colombian Supremo",
     "origin": "Huila region, Colombia",
     "tastingNotes": "Caramel sweetness, milk chocolate, roasted nuts, subtle red apple",
     "bitterness": 5,
-    "acidity": "medium",
+    "acidity": "Medium",
     "body": 3,
-    "roast": "medium",
+    "roast": "Medium",
     "bestFor": "Espresso, French press, everyday drinking, those who prefer balanced flavors",
-    "price": 9.99
+    "price": 9.99,
+    "id": "703b6e2e-16fc-71c1-7d01-49e6bd98c0fd"
   },
   {
     "name": "Sumatra Mandheling",
     "origin": "North Sumatra, Indonesia",
     "tastingNotes": "Earthy, herbal, dark chocolate, cedar, with syrupy sweetness",
     "bitterness": 7,
-    "acidity": "low",
+    "acidity": "Low",
     "body": 5,
-    "roast": "dark",
+    "roast": "Dark",
     "bestFor": "French press, cold brew, those who enjoy bold, earthy coffees with low acidity",
-    "price": 8.99
+    "price": 8.99,
+    "id": "85f5e897-70e4-affe-dfa7-6c564abb3ce9"
   },
   {
     "name": "Kenya AA",
     "origin": "Nyeri and Kirinyaga, Kenya",
     "tastingNotes": "Blackcurrant, grapefruit, tomato leaf, bright and winey finish",
     "bitterness": 3,
-    "acidity": "high",
+    "acidity": "High",
     "body": 3,
-    "roast": "light",
+    "roast": "Light",
     "bestFor": "V60 pour over, Chemex, those who love juicy, complex acidity",
-    "price": 11.49
+    "price": 11.49,
+    "id": "ac014e25-f535-3f4b-9243-b057f578f7ba"
   },
   {
     "name": "Guatemala Antigua",
     "origin": "Antigua, Guatemala",
     "tastingNotes": "Cocoa, baking spices, orange zest, rounded sweetness",
     "bitterness": 4,
-    "acidity": "medium",
+    "acidity": "Medium",
     "body": 3,
-    "roast": "medium",
+    "roast": "Medium",
     "bestFor": "Drip coffee, espresso, balanced and sweet cups",
-    "price": 9.49
+    "price": 9.49,
+    "id": "cb1cb350-b300-fe7e-b1a6-93372fcdc6ea"
   },
   {
-    "name": "Costa Rica Tarrazú",
-    "origin": "Tarrazú, Costa Rica",
+    "name": "Costa Rica Tarraz\u00FA",
+    "origin": "Tarraz\u00FA, Costa Rica",
     "tastingNotes": "Honey, citrus, red berry, crisp and clean finish",
     "bitterness": 2,
-    "acidity": "high",
+    "acidity": "High",
     "body": 2,
-    "roast": "light",
+    "roast": "Light",
     "bestFor": "Pour over, Aeropress, clarity-forward brews",
-    "price": 10.49
+    "price": 10.49,
+    "id": "3f837184-671c-ef72-dac0-f6792f542cdb"
   },
   {
     "name": "Brazil Santos",
-    "origin": "Minas Gerais and São Paulo, Brazil",
+    "origin": "Minas Gerais and S\u00E3o Paulo, Brazil",
     "tastingNotes": "Nutty, milk chocolate, low acidity, creamy body",
     "bitterness": 6,
-    "acidity": "low",
+    "acidity": "Low",
     "body": 4,
-    "roast": "medium",
+    "roast": "Medium",
     "bestFor": "Espresso, moka pot, crowd-pleasing blends",
-    "price": 7.99
+    "price": 7.99,
+    "id": "d357d08d-7198-947d-1e25-d2b3f7c8e48a"
   },
   {
     "name": "Tanzania Peaberry",
     "origin": "Mount Kilimanjaro, Tanzania",
     "tastingNotes": "Citrus, black tea, melon, lively and bright",
     "bitterness": 3,
-    "acidity": "high",
+    "acidity": "High",
     "body": 2,
-    "roast": "light",
+    "roast": "Light",
     "bestFor": "Kalita Wave, manual brews with high clarity",
-    "price": 10.99
+    "price": 10.99,
+    "id": "3eb7071a-b710-17a5-03b5-e783fbecfbbe"
   },
   {
     "name": "Hawaiian Kona",
     "origin": "Kona District, Hawaii, USA",
     "tastingNotes": "Sweet cream, light cocoa, tropical fruit, silky texture",
     "bitterness": 2,
-    "acidity": "medium",
+    "acidity": "Medium",
     "body": 3,
-    "roast": "medium",
+    "roast": "Medium",
     "bestFor": "Drip, siphon, smooth and delicate cups",
-    "price": 11.99
+    "price": 11.99,
+    "id": "0b8768f5-048b-fdc8-c5ab-3134f89753b6"
   },
   {
     "name": "Jamaican Blue Mountain",
     "origin": "Blue Mountains, Jamaica",
     "tastingNotes": "Sweet almond, mild chocolate, balanced and clean",
     "bitterness": 3,
-    "acidity": "medium",
+    "acidity": "Medium",
     "body": 3,
-    "roast": "medium",
+    "roast": "Medium",
     "bestFor": "Filter coffee, those who prefer mild, refined profiles",
-    "price": 11.99
+    "price": 11.99,
+    "id": "1e12fc44-e546-38cd-6ce9-2d8069879d24"
   },
   {
     "name": "Rwanda Bourbon",
     "origin": "Gakenke and Nyamasheke, Rwanda",
     "tastingNotes": "Red currant, hibiscus, brown sugar, tea-like body",
     "bitterness": 3,
-    "acidity": "high",
+    "acidity": "High",
     "body": 2,
-    "roast": "light",
+    "roast": "Light",
     "bestFor": "Pour over, bringing out delicate florals and fruit",
-    "price": 10.49
+    "price": 10.49,
+    "id": "ab349578-69a9-462a-7dee-17b39c8483c1"
   },
   {
     "name": "Burundi Kayanza",
     "origin": "Kayanza Province, Burundi",
     "tastingNotes": "Cranberry, maple, baking spice, clean and crisp",
     "bitterness": 4,
-    "acidity": "medium",
+    "acidity": "Medium",
     "body": 2,
-    "roast": "light",
+    "roast": "Light",
     "bestFor": "Hand-brewed filter, bright yet sweet cups",
-    "price": 9.99
+    "price": 9.99,
+    "id": "d300d53d-a1b0-95e6-9d30-97e2553c6ac0"
   },
   {
     "name": "Peru Chanchamayo",
     "origin": "Chanchamayo, Peru",
     "tastingNotes": "Caramel, gentle citrus, walnut, soft finish",
     "bitterness": 4,
-    "acidity": "medium",
+    "acidity": "Medium",
     "body": 3,
-    "roast": "medium",
+    "roast": "Medium",
     "bestFor": "Drip, batch brew, approachable daily drinker",
-    "price": 8.49
+    "price": 8.49,
+    "id": "6280b533-f328-0885-017b-6abccebbf4c3"
   },
   {
     "name": "Mexico Chiapas",
     "origin": "Chiapas, Mexico",
     "tastingNotes": "Cocoa nib, panela, orange peel, smooth body",
     "bitterness": 5,
-    "acidity": "medium",
+    "acidity": "Medium",
     "body": 3,
-    "roast": "medium",
+    "roast": "Medium",
     "bestFor": "Espresso and milk drinks, balanced chocolate notes",
-    "price": 8.99
+    "price": 8.99,
+    "id": "ec529260-2ac2-d745-dbdd-82c72d6ea5a7"
   },
   {
     "name": "Honduras Marcala",
     "origin": "La Paz, Honduras",
     "tastingNotes": "Brown sugar, stone fruit, vanilla, gentle acidity",
     "bitterness": 4,
-    "acidity": "medium",
+    "acidity": "Medium",
     "body": 4,
-    "roast": "medium",
+    "roast": "Medium",
     "bestFor": "Auto-drip, immersion, sweet and round profiles",
-    "price": 9.49
+    "price": 9.49,
+    "id": "65471f6e-4485-c79c-425c-0469e44f8dbe"
   },
   {
     "name": "Nicaragua Segovia",
     "origin": "Nueva Segovia, Nicaragua",
     "tastingNotes": "Caramel, pear, cocoa, balanced and clean",
     "bitterness": 5,
-    "acidity": "medium",
+    "acidity": "Medium",
     "body": 3,
-    "roast": "medium",
+    "roast": "Medium",
     "bestFor": "French press, drip, balanced cups",
-    "price": 8.99
+    "price": 8.99,
+    "id": "22dcf93d-95e7-9bc7-82d5-cb08ac289d9f"
   },
   {
     "name": "El Salvador Pacamara",
     "origin": "Santa Ana, El Salvador",
     "tastingNotes": "Red fruit, toffee, floral aromatics, creamy body",
     "bitterness": 3,
-    "acidity": "medium",
+    "acidity": "Medium",
     "body": 4,
-    "roast": "light",
+    "roast": "Light",
     "bestFor": "Pour over, showcasing varietal clarity",
-    "price": 10.99
+    "price": 10.99,
+    "id": "d820c4de-95ad-0361-9e07-1a507414f32a"
   },
   {
     "name": "Panama Geisha",
     "origin": "Boquete, Panama",
     "tastingNotes": "Jasmine, bergamot, tropical fruit, tea-like and luminous",
     "bitterness": 1,
-    "acidity": "high",
+    "acidity": "High",
     "body": 2,
-    "roast": "light",
+    "roast": "Light",
     "bestFor": "High-clarity filter brews, competition-style cups",
-    "price": 11.99
+    "price": 11.99,
+    "id": "57b75bf4-0145-aa58-e2b2-1a2c2d2bc040"
   },
   {
     "name": "Papua New Guinea",
     "origin": "Eastern Highlands, Papua New Guinea",
     "tastingNotes": "Tropical fruit, molasses, herbal undertones, round body",
     "bitterness": 6,
-    "acidity": "medium",
+    "acidity": "Medium",
     "body": 4,
-    "roast": "dark",
+    "roast": "Dark",
     "bestFor": "Immersion, cold brew, rich and sweet cups",
-    "price": 9.49
+    "price": 9.49,
+    "id": "9455d057-03d9-7ef1-b307-4a0121860369"
   },
   {
     "name": "India Monsooned Malabar",
     "origin": "Malabar Coast, India",
     "tastingNotes": "Low acidity, earthy, cedar, spicy with heavy body",
     "bitterness": 8,
-    "acidity": "low",
+    "acidity": "Low",
     "body": 5,
-    "roast": "dark",
+    "roast": "Dark",
     "bestFor": "Espresso, blends needing body and low acidity",
-    "price": 9.99
+    "price": 9.99,
+    "id": "3e8411d8-70c9-b4fc-d19f-949143211a5e"
   },
   {
     "name": "Yemen Mokha",
     "origin": "Haraz and Bani Matar, Yemen",
     "tastingNotes": "Cocoa, dried date, spice, winey complexity",
     "bitterness": 6,
-    "acidity": "high",
+    "acidity": "High",
     "body": 3,
-    "roast": "medium",
+    "roast": "Medium",
     "bestFor": "Manual filter, adventurous, complex cups",
-    "price": 11.49
+    "price": 11.49,
+    "id": "b30ce8de-0def-3248-ab06-0a4c18263ca7"
   },
   {
     "name": "Bolivia Caranavi",
     "origin": "Caranavi, Bolivia",
     "tastingNotes": "Honey sweetness, citrus blossom, almond, silky finish",
     "bitterness": 3,
-    "acidity": "medium",
+    "acidity": "Medium",
     "body": 3,
-    "roast": "light",
+    "roast": "Light",
     "bestFor": "Pour over, nuanced and sweet brews",
-    "price": 10.49
+    "price": 10.49,
+    "id": "84718533-d31c-5efa-ec38-f6a3a4e47985"
   },
   {
     "name": "Uganda Bugisu",
     "origin": "Mount Elgon, Uganda",
     "tastingNotes": "Dark chocolate, molasses, plum, robust body",
     "bitterness": 7,
-    "acidity": "low",
+    "acidity": "Low",
     "body": 5,
-    "roast": "dark",
+    "roast": "Dark",
     "bestFor": "French press, espresso, bold and heavy cups",
-    "price": 9.99
+    "price": 9.99,
+    "id": "3bb8d572-5e3e-b1a5-f2fe-de0bc689a92a"
+  },
+  {
+    "name": "aaa",
+    "origin": "aaa",
+    "tastingNotes": "",
+    "bitterness": 5,
+    "acidity": "Medium",
+    "body": 3,
+    "roast": "Medium",
+    "bestFor": "",
+    "price": 4.00,
+    "id": "8d0783b4-c6f1-4a99-a77a-173099d660e9"
   }
 ]

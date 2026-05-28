@@ -1,0 +1,141 @@
+@page "/admin"
+@inject CoffeeService CoffeeService
+
+<PageTitle>Admin - Add Coffee</PageTitle>
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-5 fw-semibold mb-1">Add a new coffee</h1>
+            <p class="text-secondary mb-0">Create a fresh listing for the coffee catalog.</p>
+        </div>
+        <NavLink class="btn btn-outline-secondary" href="/">
+            Back to home
+        </NavLink>
+    </div>
+
+    @if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div class="alert alert-success">@successMessage</div>
+    }
+    
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger">@errorMessage</div>
+    }
+
+    <EditForm Model="coffee" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+
+        <div class="row g-3">
+            <div class="col-12 col-md-6">
+                <label class="form-label" for="name">Name</label>
+                <InputText id="name" class="form-control" @bind-Value="coffee.Name" />
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label class="form-label" for="origin">Origin</label>
+                <InputText id="origin" class="form-control" @bind-Value="coffee.Origin" />
+            </div>
+
+            <div class="col-12">
+                <label class="form-label" for="tastingNotes">Tasting notes</label>
+                <InputTextArea id="tastingNotes" class="form-control" @bind-Value="coffee.TastingNotes" Rows="3" />
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <label class="form-label" for="bestFor">Best for</label>
+                <InputText id="bestFor" class="form-control" @bind-Value="coffee.BestFor" />
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <label class="form-label" for="price">Price</label>
+                <InputNumber id="price" class="form-control" @bind-Value="coffee.Price" step="0.01" />
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <label class="form-label" for="body">Body</label>
+                <InputNumber id="body" class="form-control" @bind-Value="coffee.Body" min="1" max="5" />
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <label class="form-label" for="bitterness">Bitterness</label>
+                <InputNumber id="bitterness" class="form-control" @bind-Value="coffee.Bitterness" min="1" max="10" />
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <label class="form-label" for="roast">Roast</label>
+                <InputSelect id="roast" class="form-select" @bind-Value="coffee.Roast">
+                    <option value="0">Light</option>
+                    <option value="1">Medium</option>
+                    <option value="2">Dark</option>
+                </InputSelect>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <label class="form-label" for="acidity">Acidity</label>
+                <InputSelect id="acidity" class="form-select" @bind-Value="coffee.Acidity">
+                    <option value="0">Low</option>
+                    <option value="1">Medium</option>
+                    <option value="2">High</option>
+                </InputSelect>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary" disabled="@isSaving">
+                @(isSaving ? "Saving..." : "Add coffee")
+            </button>
+        </div>
+    </EditForm>
+</div>
+
+@code {
+    private Coffee coffee = new()
+    {
+        Acidity = 1,
+        Roast = 1,
+        Body = 3,
+        Bitterness = 5,
+        Price = 4.00m
+    };
+
+    private bool isSaving;
+    private string? successMessage;
+    private string? errorMessage;
+
+    private async Task HandleValidSubmit()
+    {
+        isSaving = true;
+        successMessage = null;
+        errorMessage = null;
+
+        try
+        {
+            var created = await CoffeeService.AddAsync(coffee);
+            if (created is null)
+            {
+                errorMessage = "Unable to add the coffee. Please try again.";
+                return;
+            }
+
+            successMessage = $"Added {created.Name} successfully.";
+            coffee = new Coffee
+            {
+                Acidity = 1,
+                Roast = 1,
+                Body = 3,
+                Bitterness = 5,
+                Price = 4.00m
+            };
+        }
+        catch
+        {
+            errorMessage = "Unable to add the coffee. Please try again.";
+        }
+        finally
+        {
+            isSaving = false;
+        }
+    }
+}

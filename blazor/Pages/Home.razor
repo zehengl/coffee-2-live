@@ -10,9 +10,12 @@
                 <h1 class="display-5 fw-semibold mb-0">Coffee2Live</h1>
                 <p class="text-secondary mb-0">Curated coffees you will love.</p>
             </div>
-            <button class="btn btn-outline-secondary" @onclick="ToggleDarkMode">
-                @(isDarkMode ? "Switch to light mode" : "Switch to dark mode")
-            </button>
+            <div class="d-flex gap-2">
+                <NavLink class="btn btn-secondary" href="admin">Admin</NavLink>
+                <button class="btn btn-outline-secondary" @onclick="ToggleDarkMode">
+                    @(isDarkMode ? "Switch to light mode" : "Switch to dark mode")
+                </button>
+            </div>
         </div>
 
         <div class="mt-2 mb-4">
